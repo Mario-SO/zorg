@@ -1,8 +1,8 @@
 const std = @import("std");
-const zorg = @import("zorg");
-const Actor = zorg.Actor;
-const Engine = zorg.Engine;
-const Message = zorg.Message;
+const zurg = @import("zurg");
+const Actor = zurg.Actor;
+const Engine = zurg.Engine;
+const Message = zurg.Message;
 
 pub fn main() !void {
     var arena = std.heap.ArenaAllocator.init(std.heap.page_allocator);

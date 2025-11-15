@@ -4,19 +4,19 @@ pub fn build(b: *std.Build) void {
     const target = b.standardTargetOptions(.{});
     const optimize = b.standardOptimizeOption(.{});
 
-    const mod = b.addModule("zorg", .{
+    const mod = b.addModule("zurg", .{
         .root_source_file = b.path("lib/root.zig"),
         .target = target,
     });
 
     const exe = b.addExecutable(.{
-        .name = "zorg",
+        .name = "zurg",
         .root_module = b.createModule(.{
             .root_source_file = b.path("src/main.zig"),
             .target = target,
             .optimize = optimize,
             .imports = &.{
-                .{ .name = "zorg", .module = mod },
+                .{ .name = "zurg", .module = mod },
             },
         }),
     });
