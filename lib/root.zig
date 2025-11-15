@@ -43,4 +43,26 @@ pub const Actor = struct {
     }
 };
 
-const Engine = struct {};
+pub const Engine = struct {
+    actors: std.ArrayList(Actor),
+    allocator: std.mem.Allocator,
+
+    pub fn init(allocator: std.mem.Allocator) Engine {
+        return .{
+            .allocator = allocator,
+            .actors = std.ArrayList(Actor).empty,
+        };
+    }
+
+    pub fn deinit(self: *Engine) void {
+        self.actors.deinit(self.allocator);
+    }
+
+    pub fn addActor(self: *Engine, actor: Actor) !void {
+        try self.actors.append(self.allocator, actor);
+    }
+
+    pub fn removeActor(self: *Engine) void {
+        self.actors.pop();
+    }
+};
